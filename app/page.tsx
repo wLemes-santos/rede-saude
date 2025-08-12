@@ -499,13 +499,13 @@ export default function PortfolioPage() {
           <section className="py-16 px-6 bg-blue-50">
             <div className="container mx-auto">
               <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
-                Gestão de Diagnóstico e Unidades Existentes
+                Gestão de Diagnóstico em Unidades Existentes
               </h3>
               <Card className="max-w-5xl mx-auto">
                 <CardHeader>
                   <CardTitle className="flex items-center text-2xl text-blue-900">
                     <Building2 className="h-8 w-8 text-blue-600 mr-3" />
-                    Revitalização de Setores de Diagnóstico
+                    Revitalização de Setores de Diagnósticos
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -555,7 +555,7 @@ export default function PortfolioPage() {
           <section className="py-16 px-6 bg-white">
             <div className="container mx-auto">
               <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
-                Implantação de Serviços de Diagnóstico
+                Implantação de Serviços de Diagnósticos
               </h3>
               <div className="max-w-5xl mx-auto">
                 <Card className="mb-8">
@@ -564,7 +564,7 @@ export default function PortfolioPage() {
                       <Building2 className="h-8 w-8 text-blue-600 mr-3" />
                       Serviços Completos de Diagnóstico por Imagem
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-justify">
                       Ideal para hospitais que estão encerrando estruturas
                       antigas, reformulando seus serviços ou iniciando as
                       atividades pela primeira vez.
@@ -600,7 +600,7 @@ export default function PortfolioPage() {
                     <p className="text-lg font-medium">
                       Com essa estrutura, transformamos ambientes vazios ou
                       obsoletos em unidades modernas e resolutivas de
-                      diagnóstico por imagem.
+                      diagnósticos por imagem.
                     </p>
                   </CardContent>
                 </Card>
