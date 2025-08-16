@@ -344,7 +344,7 @@ export default function PortfolioPage() {
               <DialogTrigger asChild>
                 <Button
                   variant="outline"
-                  className=" border-white hover:bg-blue-50 bg-transparent"
+                  className=" border-none hover:bg-blue-50 bg-transparent"
                 >
                   <Phone className="h-4 w-4 mr-2" />
                   Contato
