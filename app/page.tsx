@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -432,6 +433,14 @@ export default function PortfolioPage() {
                       <MapPin className="h-4 w-4 mr-2" />
                       Ver Localização
                     </Button>
+                    <DialogClose asChild>
+                      <Button
+                        variant="outline"
+                        className="flex-1 bg-gray-200 text-gray-700"
+                      >
+                        Voltar
+                      </Button>
+                    </DialogClose>
                   </div>
 
                   <div className="text-center pt-2">
@@ -1022,28 +1031,46 @@ export default function PortfolioPage() {
                 {examesDetalhados
                   .filter((exame) => exame.categoria === categoria)
                   .map((exame, index) => (
-                    <Card
-                      key={index}
-                      className="hover:shadow-lg transition-shadow"
-                    >
-                      <CardHeader>
-                        <div className="flex items-start space-x-3">
-                          <div className="p-2 bg-blue-100 rounded-lg text-blue-600 flex-shrink-0">
-                            {exame.icon}
-                          </div>
-                          <div>
-                            <CardTitle className="text-lg text-blue-900">
-                              {exame.nome}
-                            </CardTitle>
-                          </div>
+                    <Dialog key={index}>
+                      <DialogTrigger asChild>
+                        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                          <CardHeader>
+                            <div className="flex items-start space-x-3">
+                              <div className="p-2 bg-blue-100 rounded-lg text-blue-600 flex-shrink-0">
+                                {exame.icon}
+                              </div>
+                              <div>
+                                <CardTitle className="text-lg text-blue-900">
+                                  {exame.nome}
+                                </CardTitle>
+                              </div>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-gray-600 leading-relaxed">
+                              {exame.descricao}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-md">
+                        <DialogHeader>
+                          <DialogTitle className="text-xl text-blue-900">
+                            {exame.nome}
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <p className="text-gray-700 text-justify">
+                            {exame.descricao}
+                          </p>
                         </div>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-600 leading-relaxed">
-                          {exame.descricao}
-                        </p>
-                      </CardContent>
-                    </Card>
+                        <DialogClose asChild>
+                          <Button variant="outline" className="w-full mt-4">
+                            Voltar
+                          </Button>
+                        </DialogClose>
+                      </DialogContent>
+                    </Dialog>
                   ))}
               </div>
             </div>
