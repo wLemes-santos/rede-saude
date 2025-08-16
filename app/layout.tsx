@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   generator: 'v0.dev',
 }
 
+//estou aqui
+
 export default function RootLayout({
   children,
 }: Readonly<{
