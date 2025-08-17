@@ -70,6 +70,7 @@ import {
   imgAleatoria2,
   grupoSaude
 } from "../pictures/importPictures"
+import DialogContentContect from "@/components/DialogContentContect";
 
 
 
@@ -348,132 +349,49 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-blue-900 text-white py-6 px-6">
+      <header className="bg-blue-900 text-white px-4 md:px-8 py-4 md:py-8">
         <div className="container mx-auto">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+            <div className="flex flex-col md:flex-row md:items-center md:space-x-4">
               {/* Logo Real do Grupo Saúde */}
-              <div className="bg-white p-4 rounded-lg shadow-md">
+              <div className="bg-white p-4 rounded-lg shadow-md mx-auto md:mx-0">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ndeimyWMlkTO5DS3JG5eSWfMvlXnYS.png"
                   alt="Grupo Saúde Vale do Jurumirim"
                   className="h-16 w-auto object-contain"
                 />
               </div>
-              <div>
+              <div className="mt-4 md:mt-0 text-center md:text-left">
                 <h1 className="text-2xl font-bold">Portfólio Institucional</h1>
                 <p className="text-blue-200">Grupo Saúde Vale do Jurumirim</p>
               </div>
             </div>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button
-                  className=" border-none hover:bg-blue-50 bg-transparent"
-                >
-                  <Phone className="h-4 w-4 mr-2" />
-                  Contato
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md">
-                <DialogHeader>
-                  <DialogTitle className="flex items-center text-xl text-blue-900">
-                    <Phone className="h-5 w-5 mr-2" />
-                    Entre em Contato
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="space-y-4">
-                  {/* Logo no modal */}
-                  <div className="text-center">
-                    <div className="inline-block bg-blue-50 p-4 rounded-lg mb-4">
-                      <img
-                        src="/images/logo-grupo-saude-completo.png"
-                        alt="Grupo Saúde Vale do Jurumirim"
-                        className="h-20 w-auto object-contain mx-auto"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Informações de contato */}
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
-                      <Phone className="h-5 w-5 text-blue-600 flex-shrink-0" />
-                      <div>
-                        <p className="font-semibold text-gray-900">Telefone</p>
-                        <p className="text-blue-600 font-medium">
-                          (14) 3193-0025
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-3 p-3 bg-green-50 rounded-lg">
-                      <MapPin className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-semibold text-gray-900">
-                          Endereço Principal
-                        </p>
-                        <p className="text-gray-600 text-sm">
-                          Rua Salvador de Freitas, 1316, Térreo
-                          <br />
-                          Centro - Itaí/SP
-                          <br />
-                          CEP 18730-027
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center space-x-3 p-3 bg-purple-50 rounded-lg">
-                      <Calendar className="h-5 w-5 text-purple-600 flex-shrink-0" />
-                      <div>
-                        <p className="font-semibold text-gray-900">
-                          Horário de Atendimento
-                        </p>
-                        <p className="text-gray-600 text-sm">
-                          Segunda a Sexta: 7h às 17h
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center space-x-3 p-3 bg-orange-50 rounded-lg">
-                      <Mail className="h-5 w-5 text-orange-600 flex-shrink-0" />
-                      <div>
-                        <p className="font-semibold text-gray-900">
-                          Agendamentos
-                        </p>
-                        <p className="text-gray-600 text-sm">
-                          Disponível em todas as unidades
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Botões de ação */}
-                  <div className="flex flex-col sm:flex-row gap-2 pt-4">
-                    <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
-                      <Phone className="h-4 w-4 mr-2" />
-                      Ligar Agora
-                    </Button>
-                    <Button className="flex-1 bg-transparent">
-                      <MapPin className="h-4 w-4 mr-2" />
-                      Ver Localização
-                    </Button>
-                    <DialogClose asChild>
-                      <Button
-                        className="flex-1 bg-gray-200 text-gray-700"
-                      >
-                        Voltar
-                      </Button>
-                    </DialogClose>
-                  </div>
-
-                  <div className="text-center pt-2">
-                    <p className="text-sm text-gray-500">
-                      Nossa equipe está preparada para acolher sua necessidade
-                      com eficiência, empatia e segurança.
-                    </p>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
+            <div className="block md:hidden">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    className="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white shadow-lg rounded-full px-4 py-2"
+                  >
+                    <Phone className="h-4 w-4 mr-2" />
+                    Contato
+                  </Button>
+                </DialogTrigger>
+                <DialogContentContect/>
+              </Dialog>
+            </div>
+             <div className="hidden md:block">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    className="bg-blue-900 hover:bg-blue-700 text-white rounded-full px-4 py-2"
+                  >
+                    <Phone className="h-4 w-4 mr-2" />
+                    Contato
+                  </Button>
+                </DialogTrigger>
+                <DialogContentContect/>
+              </Dialog>
+            </div>
           </div>
         </div>
       </header>
@@ -483,7 +401,7 @@ export default function PortfolioPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-8">
             {/* Logo grande na apresentação */}
-            <div className="inline-block bg-white p-8 rounded-xl shadow-lg mb-6">
+            <div className="inline-block bg-white px-4 md:px-8, py-4 md:py-8 rounded-xl shadow-lg mb-6">
               <Image
                 src={grupoSaude.src}
                 alt="Grupo Saúde Vale do Jurumirim"
@@ -583,25 +501,27 @@ export default function PortfolioPage() {
                 </CardContent>
               </Card>
             </div>
-            <div className="flex items-center justify-center mt-12 gap-4">
-              <div>
-                <Image
-                src={imgAleatoria1.src}
-                alt="Imagem ilustrativa de diagnóstico por imagem"
-                className="rounded-lg shadow-lg w-full h-auto object-cover"
-                width={300}  // Largura em pixels
-                height={200} // Altura em pixels
-                />
-              </div>
+            <div className="flex justify-center mt-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
+                <div>
+                  <Image
+                  src={imgAleatoria1.src}
+                  alt="Imagem ilustrativa de diagnóstico por imagem"
+                  className="rounded-lg shadow-lg w-full h-auto object-cover"
+                  width={300}  // Largura em pixels
+                  height={200} // Altura em pixels
+                  />
+                </div>
 
-              <div>
-                <Image
-                src={imgAleatoria2.src}
-                alt="Imagem ilustrativa de diagnóstico por imagem"
-                className="rounded-lg shadow-lg w-full h-auto object-cover"
-                width={300}  // Largura em pixels
-                height={200} // Altura em pixels
-                />
+                <div>
+                  <Image
+                  src={imgAleatoria2.src}
+                  alt="Imagem ilustrativa de diagnóstico por imagem"
+                  className="rounded-lg shadow-lg w-full h-auto object-cover"
+                  width={300}  // Largura em pixels
+                  height={200} // Altura em pixels
+                  />
+                </div>
               </div>
             </div>
           </section>
@@ -1098,7 +1018,7 @@ export default function PortfolioPage() {
                           </CardContent> */}
                         </Card>
                       </DialogTrigger>
-                      <DialogContent className="sm:max-w-md">
+                      <DialogContent className="w-[95%] max-w-md rounded-2xl mx-auto px-4 sm:px-6">
                         <DialogHeader>
                           <DialogTitle className="text-xl text-blue-900">
                             {exame.nome}
