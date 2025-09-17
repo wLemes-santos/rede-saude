@@ -9,7 +9,6 @@ import { Button, Badge, Row, Col, Typography, Space, Menu, Layout, Divider } fro
 import { Separator } from "@/components/ui/separator";
 import {
   Heart,
-  Stethoscope,
   Users,
   MapPin,
   Phone,
@@ -69,12 +68,13 @@ import {
   imgAleatoria2,
   grupoSaude
 } from "../pictures/importPictures"
+import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import Image from "next/image";
 import Logo from "../pictures/Grupo_Saude_Vale_Jurumirim.png"
 import MedicImage from "../pictures/medicos.png"
 
 const { Title, Paragraph, Text } = Typography
-const { Header, Content, Footer } = Layout
+
 
 
 
@@ -132,7 +132,7 @@ export default function PortfolioPage() {
         "Inclui abdominal, transvaginal, morfológico, com Doppler e ecocardiograma. Diagnóstico por ondas sonoras, não invasivo e indolor.",
       icon: <Waves className="h-6 w-6" />,
       categoria: "Exames e procedimentos de radiologia",
-      img:ultrasonografia
+      img: ultrasonografia
     },
     {
       nome: "Raio-X (Radiografia)",
@@ -140,7 +140,7 @@ export default function PortfolioPage() {
         "Exame simples, rápido e seguro que usa radiação ionizante para visualizar ossos, pulmões e outros tecidos. Inclui tórax, coluna, face e panorâmico.",
       icon: <Activity className="h-6 w-6" />,
       categoria: "Exames e procedimentos de radiologia",
-      img:raiox,
+      img: raiox,
     },
     {
       nome: "Eletrocardiograma (ECG)",
@@ -163,7 +163,7 @@ export default function PortfolioPage() {
       descricao: "A eletroneuromiografia é um exame que avalia o funcionamento dos nervos e músculos. Ele é usado para investigar a causa de sintomas como dormência, formigamento, dor e fraqueza.",
       icon: <Brain className="h-6 w-6" />,
       categoria: "Exames Neurológicos",
-      img:eletroneuromiografia
+      img: eletroneuromiografia
     },
     {
       nome: "Espirometria",
@@ -351,153 +351,68 @@ export default function PortfolioPage() {
   ];
 
   return (
-    <Layout className="min-h-screen bg-white">
-      
-        {/* Header */}
-        <Header className="bg-white shadow-sm border-b px-4 h-auto py-4"  style={{ backgroundColor: '#FFFFFF' }}>
-          <div className="container mx-auto flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Image src={Logo} alt={""}/>
-            </div>
-            <Menu mode="horizontal" className="hidden md:flex border-none bg-transparent">
-              <Menu.Item key="inicio">Início</Menu.Item>
-              <Menu.Item key="especialidades">Especialidades</Menu.Item>
-              <Menu.Item key="exames">Exames</Menu.Item>
-              <Menu.Item key="contato">Contato</Menu.Item>
-            </Menu>
-          </div>
-        </Header>
-    
+    <div className="min-h-screen bg-white">
 
-      {/* Apresentação Institucional */}
-      <section className="py-16 px-6 bg-gradient-to-br from-blue-50 to-green-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-8">
-            {/* Logo grande na apresentação */}
-            <div className="inline-block bg-white px-4 md:px-8, py-4 md:py-8 rounded-xl shadow-lg mb-6">
-              <Image
-                src={grupoSaude.src}
-                alt="Grupo Saúde Vale do Jurumirim"
-                className="h-32 w-auto object-contain mx-auto"
-                height={200}
-                width={300}
-              />
-            </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Apresentação Institucional
-            </h2>
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b px-4 py-4">
+        <div className="container mx-auto flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center space-x-2">
+            <Image src={Logo} alt="Logo" />
           </div>
-          <div className="max-w-none text-gray-700 leading-relaxed">
-            <p className="text-xl text-justify">
-              Somos um grupo de soluções aplicadas nas mais diversas áreas de
-              saúde. Transformamos estruturas hospitalares e clínicas com
-              inteligência a serviço do cuidado. Utilizamos tecnologia de ponta
-              e dados clínicos para entregar diagnósticos mais rápidos, precisos
-              e acessíveis, sempre com foco na experiência do paciente.
-              Acreditamos que saúde de qualidade precisa ser eficiente, mas
-              também humana. Trabalhamos em parcerias públicas e privadas,
-              atuando lado a lado com os profissionais da saúde para apoiar
-              decisões clínicas com segurança e confiança. Nossa excelência é
-              reconhecida por um corpo clínico de referência e protocolos
-              rigorosos que garantem credibilidade à prática médica. Somos por
-              você. E estamos prontos para levar saúde de qualidade - com
-              escala, precisão e compromisso com a vida.
-            </p>
-          </div>
+
+          {/* Menu */}
+          <NavigationMenu.Root>
+            <NavigationMenu.List className="hidden md:flex gap-6">
+              <NavigationMenu.Item>
+                <NavigationMenu.Link className="text-gray-700 hover:text-black transition" href="#inicio">
+                  Início
+                </NavigationMenu.Link>
+              </NavigationMenu.Item>
+
+              <NavigationMenu.Item>
+                <NavigationMenu.Link className="text-gray-700 hover:text-black transition" href="#especialidades">
+                  Especialidades
+                </NavigationMenu.Link>
+              </NavigationMenu.Item>
+
+              <NavigationMenu.Item>
+                <NavigationMenu.Link className="text-gray-700 hover:text-black transition" href="#exames">
+                  Exames
+                </NavigationMenu.Link>
+              </NavigationMenu.Item>
+
+              <NavigationMenu.Item>
+                <NavigationMenu.Link className="text-gray-700 hover:text-black transition" href="#contato">
+                  Contato
+                </NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Root>
         </div>
-      </section>
+      </header>
+
+
+
 
       {/* Áreas de Atuação */}
-      <section className="py-16 px-6 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-bold text-gray-900 mb-4">
-              Nossas Áreas de Atuação
-            </h3>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Oferecemos soluções completas e integradas em saúde, com expertise
-              em diferentes segmentos para atender todas as necessidades de
-              nossos parceiros e pacientes.
+      <section className="px-6 bg-white">
+        <section className="bg-gradient-to-b from-blue-900 to-teal-400 text-white w-screen relative left-1/2 right-1/2 -mx-[50vw]" style={{ minHeight: 270 }}>
+          <div className="container mx-auto px-4 max-w-2xl">
+            <h2 className="text-3xl font-bold text-white font-inter mb-4 py-5">
+              Cuidando da sua saúde<br /> com excelência e <br />proximidade
+            </h2>
+            <p className="font-inter text-white">
+              Atendimento humanizado com tecnologia para<br /> sua saúde e bem-estar
             </p>
           </div>
-          <section className="py-16 px-6 bg-blue-50">
-            <div className="container mx-auto">
-              <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
-                Gestão de Diagnóstico em Unidades Existentes
-              </h3>
-              <Card className="max-w-5xl mx-auto">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-2xl text-blue-900">
-                    <Building2 className="h-8 w-8 text-blue-600 mr-3" />
-                    Revitalização de Setores de Diagnósticos
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700 mb-6 leading-relaxed text-justify">
-                    Muitos gestores hospitalares possuem setores de diagnósticos
-                    obsoletos ou subutilizados, sem manutenção correta e sem mão
-                    de obra qualificada, devido aos altos custos operacionais. O
-                    Grupo Saúde - Vale do Jurumirim, através de projeto e estudo
-                    aplicado de viabilidade, pode assumir a gestão completa do
-                    respectivo setor, revitalizando-o e transformando-o com
-                    expertise, tecnologia e recursos humanos adequados.
-                  </p>
-                  <div className="grid md:grid-cols-3 gap-6">
-                    <div className="text-center">
-                      <Settings className="h-12 w-12 text-blue-600 mx-auto mb-3" />
-                      <h4 className="font-semibold text-blue-900 mb-2">
-                        Expertise Técnica
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        Profissionais qualificados e experientes
-                      </p>
-                    </div>
-                    <div className="text-center">
-                      <Zap className="h-12 w-12 text-green-600 mx-auto mb-3" />
-                      <h4 className="font-semibold text-green-900 mb-2">
-                        Tecnologia Avançada
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        Equipamentos modernos e atualizados
-                      </p>
-                    </div>
-                    <div className="text-center">
-                      <Users className="h-12 w-12 text-purple-600 mx-auto mb-3" />
-                      <h4 className="font-semibold text-purple-900 mb-2">
-                        Recursos Humanos
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        Equipe especializada e treinada
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-            <div className="flex justify-center mt-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
-                <div>
-                  <Image
-                  src={imgAleatoria1.src}
-                  alt="Imagem ilustrativa de diagnóstico por imagem"
-                  className="rounded-lg shadow-lg w-full h-auto object-cover"
-                  width={300}  // Largura em pixels
-                  height={200} // Altura em pixels
-                  />
-                </div>
-
-                <div>
-                  <Image
-                  src={imgAleatoria2.src}
-                  alt="Imagem ilustrativa de diagnóstico por imagem"
-                  className="rounded-lg shadow-lg w-full h-auto object-cover"
-                  width={300}  // Largura em pixels
-                  height={200} // Altura em pixels
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
+          <Image
+            src={MedicImage}
+            alt="Imagem médica"
+            className="absolute top-0 right-0 h-80 object-contain z-20"
+          />
+        </section>
+        <div className="container mx-auto">
           {/* Implantação de Serviços */}
           <section className="py-16 px-6 bg-white">
             <div className="container mx-auto">
@@ -1074,13 +989,12 @@ export default function PortfolioPage() {
                     )}
                     <div>
                       <Badge
-                        className={`mb-2 ${
-                          unidade.tipo === "Unidade Principal"
+                        className={`mb-2 ${unidade.tipo === "Unidade Principal"
                             ? "bg-blue-100 text-blue-800"
                             : unidade.tipo === "Unidade Móvel"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-gray-100 text-gray-800"
-                        }`}
+                              ? "bg-green-100 text-green-800"
+                              : "bg-gray-100 text-gray-800"
+                          }`}
                       >
                         {unidade.tipo}
                       </Badge>
@@ -1467,6 +1381,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </footer>
-    </Layout>
+    </div>
   );
 }
