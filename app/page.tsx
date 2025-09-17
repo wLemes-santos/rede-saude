@@ -72,6 +72,7 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import Image from "next/image";
 import Logo from "../pictures/Grupo_Saude_Vale_Jurumirim.png"
 import MedicImage from "../pictures/medicos.png"
+import DialogContentContect from "@/components/DialogContentContect";
 
 const { Title, Paragraph, Text } = Typography
 
@@ -365,26 +366,29 @@ export default function PortfolioPage() {
           <NavigationMenu.Root>
             <NavigationMenu.List className="hidden md:flex gap-6">
               <NavigationMenu.Item>
-                <NavigationMenu.Link className="text-gray-700 hover:text-black transition" href="#inicio">
-                  Início
-                </NavigationMenu.Link>
-              </NavigationMenu.Item>
-
-              <NavigationMenu.Item>
-                <NavigationMenu.Link className="text-gray-700 hover:text-black transition" href="#especialidades">
-                  Especialidades
-                </NavigationMenu.Link>
-              </NavigationMenu.Item>
-
-              <NavigationMenu.Item>
-                <NavigationMenu.Link className="text-gray-700 hover:text-black transition" href="#exames">
-                  Exames
-                </NavigationMenu.Link>
-              </NavigationMenu.Item>
-
-              <NavigationMenu.Item>
                 <NavigationMenu.Link className="text-gray-700 hover:text-black transition" href="#contato">
-                  Contato
+                  <div className="block md:hidden">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button className="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white shadow-lg rounded-full px-4 py-2">
+                          <Phone className="h-4 w-4 mr-2" />
+                          Contato
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContentContect />
+                    </Dialog>
+                  </div>
+                  <div className="hidden md:block">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button className="bg-blue-900 hover:bg-blue-700 text-white rounded-full px-4 py-2">
+                          <Phone className="h-4 w-4 mr-2" />
+                          Contato
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContentContect />
+                    </Dialog>
+                  </div>
                 </NavigationMenu.Link>
               </NavigationMenu.Item>
             </NavigationMenu.List>
@@ -990,10 +994,10 @@ export default function PortfolioPage() {
                     <div>
                       <Badge
                         className={`mb-2 ${unidade.tipo === "Unidade Principal"
-                            ? "bg-blue-100 text-blue-800"
-                            : unidade.tipo === "Unidade Móvel"
-                              ? "bg-green-100 text-green-800"
-                              : "bg-gray-100 text-gray-800"
+                          ? "bg-blue-100 text-blue-800"
+                          : unidade.tipo === "Unidade Móvel"
+                            ? "bg-green-100 text-green-800"
+                            : "bg-gray-100 text-gray-800"
                           }`}
                       >
                         {unidade.tipo}
