@@ -5,8 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button, Image } from "antd"
-import { Badge } from "@/components/ui/badge";
+import { Button, Badge, Row, Col, Typography, Space, Menu, Layout, Divider } from "antd"
 import { Separator } from "@/components/ui/separator";
 import {
   Heart,
@@ -70,7 +69,12 @@ import {
   imgAleatoria2,
   grupoSaude
 } from "../pictures/importPictures"
-import DialogContentContect from "@/components/DialogContentContect";
+import Image from "next/image";
+import Logo from "../pictures/Grupo_Saude_Vale_Jurumirim.png"
+import MedicImage from "../pictures/medicos.png"
+
+const { Title, Paragraph, Text } = Typography
+const { Header, Content, Footer } = Layout
 
 
 
@@ -347,54 +351,23 @@ export default function PortfolioPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-blue-900 text-white px-4 md:px-8 py-4 md:py-8">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-            <div className="flex flex-col md:flex-row md:items-center md:space-x-4">
-              {/* Logo Real do Grupo Saúde */}
-              <div className="bg-white p-4 rounded-lg shadow-md mx-auto md:mx-0">
-                <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ndeimyWMlkTO5DS3JG5eSWfMvlXnYS.png"
-                  alt="Grupo Saúde Vale do Jurumirim"
-                  className="h-16 w-auto object-contain"
-                />
-              </div>
-              <div className="mt-4 md:mt-0 text-center md:text-left">
-                <h1 className="text-2xl font-bold">Portfólio Institucional</h1>
-                <p className="text-blue-200">Grupo Saúde Vale do Jurumirim</p>
-              </div>
+    <Layout className="min-h-screen bg-white">
+      
+        {/* Header */}
+        <Header className="bg-white shadow-sm border-b px-4 h-auto py-4"  style={{ backgroundColor: '#FFFFFF' }}>
+          <div className="container mx-auto flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <Image src={Logo} alt={""}/>
             </div>
-            <div className="block md:hidden">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button
-                    className="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white shadow-lg rounded-full px-4 py-2"
-                  >
-                    <Phone className="h-4 w-4 mr-2" />
-                    Contato
-                  </Button>
-                </DialogTrigger>
-                <DialogContentContect/>
-              </Dialog>
-            </div>
-             <div className="hidden md:block">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button
-                    className="bg-blue-900 hover:bg-blue-700 text-white rounded-full px-4 py-2"
-                  >
-                    <Phone className="h-4 w-4 mr-2" />
-                    Contato
-                  </Button>
-                </DialogTrigger>
-                <DialogContentContect/>
-              </Dialog>
-            </div>
+            <Menu mode="horizontal" className="hidden md:flex border-none bg-transparent">
+              <Menu.Item key="inicio">Início</Menu.Item>
+              <Menu.Item key="especialidades">Especialidades</Menu.Item>
+              <Menu.Item key="exames">Exames</Menu.Item>
+              <Menu.Item key="contato">Contato</Menu.Item>
+            </Menu>
           </div>
-        </div>
-      </header>
+        </Header>
+    
 
       {/* Apresentação Institucional */}
       <section className="py-16 px-6 bg-gradient-to-br from-blue-50 to-green-50">
@@ -1101,7 +1074,6 @@ export default function PortfolioPage() {
                     )}
                     <div>
                       <Badge
-                        variant="secondary"
                         className={`mb-2 ${
                           unidade.tipo === "Unidade Principal"
                             ? "bg-blue-100 text-blue-800"
@@ -1495,6 +1467,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </footer>
-    </div>
+    </Layout>
   );
 }
