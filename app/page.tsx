@@ -1,3 +1,4 @@
+'use client'
 import {
   Card,
   CardContent,
@@ -5,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button, Badge, Row, Col, Typography, Space, Menu, Layout, Divider } from "antd"
+import { Button, Badge, Row, Col, Typography, Space, Menu, Layout, Divider, Carousel } from "antd"
 import { Separator } from "@/components/ui/separator";
 import {
   Heart,
@@ -73,9 +74,7 @@ import Image from "next/image";
 import Logo from "../pictures/Grupo_Saude_Vale_Jurumirim.png"
 import MedicImage from "../pictures/medicos.png"
 import DialogContentContect from "@/components/DialogContentContect";
-
-const { Title, Paragraph, Text } = Typography
-
+import { id } from "date-fns/locale";
 
 
 
@@ -297,37 +296,24 @@ export default function PortfolioPage() {
       endereco: "Rua Salvador de Freitas, 1316, Térreo - Centro, Itaí/SP",
       cep: "CEP 18730-027",
       tipo: "Unidade Principal",
-    },
-    {
-      nome: "Santa Casa de Misericórdia de Itaí",
-      endereco: "SP-255, km 363 - Jardim Monte Alto, Itaí/SP",
-      cep: "",
-      tipo: "Parceria Hospitalar",
+      exames: ['Tomografia', 'Eletrocardiograma', 'Eletrocefalograma', 'Mapa', 'Holter', 'Espirometria', 'Endoscopia', 'Colonoscopia', 'Ultrassom Convencional', 'Doppler', 'Morfológico', 'Transvaginal', 'Mamografia Digital', 'Ressonância Magnética', 'Densitometria Óssea', 'Raio-X Digital'],
+      examesImg: [{ img: raiox, text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }]
     },
     {
       nome: "Santa Casa de Misericórdia de Avaré",
       endereco: "Rua Mato Grosso, anexo à Santa Casa - Centro, Avaré/SP",
       cep: "",
       tipo: "Parceria Hospitalar",
+      exames: ['Raio-X', 'Audiometria', 'Acuidade Visual', 'Exames Laboratorias', 'Consultas Medicas', 'Tomografia', 'Eletrocardiograma', 'Eletrocefalograma', 'Mapa', 'Holter', 'Espirometria', 'Endoscopia', 'Colonoscopia', 'Ultrassom Convencional', 'Doppler', 'Morfológico', 'Transvaginal', 'Mamografia Digital', 'Ressonância Magnética', 'Densitometria Óssea', 'Raio-X Digital'],
+      examesImg: [{ img: raiox, text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }]
     },
     {
       nome: "Santa Casa de Misericórdia de Taquarituba",
       endereco: "Rua Mal. Floriano Peixoto, 95 - Centro, Taquarituba/SP",
       cep: "",
       tipo: "Parceria Hospitalar",
-    },
-    {
-      nome: "Unimed Avaré - Núcleo de Exames Complementares",
-      endereco: "Rua Santa Catarina, 1961 - Vila, Avaré/SP",
-      cep: "",
-      tipo: "Parceria Clínica",
-    },
-    {
-      nome: "Unidade de Saúde Móvel - Carreta Adaptada",
-      endereco:
-        "Atendimento itinerante em parceria com instituições públicas e privadas",
-      cep: "",
-      tipo: "Unidade Móvel",
+      exames: ['Densitometria óssea', 'Eletrocardiograma', 'Eletrocefalograma', 'Espirometria', 'Endoscopia', 'Colonoscopia', 'Ultrassom Convencional'],
+      examesImg: [{ img: raiox, text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }]
     },
   ];
 
@@ -350,6 +336,20 @@ export default function PortfolioPage() {
     "Consultoria para definição de fluxos documentais e prazos legais de guarda",
     "Redução de papel, espaço físico e riscos de extravio",
   ];
+
+  const onChange = (currentSlide: number) => {
+    console.log(currentSlide);
+  };
+
+  const contentStyle: React.CSSProperties = {
+    margin: 0,
+    height: '160px',
+    color: '#fff',
+    lineHeight: '160px',
+    textAlign: 'center',
+    background: '#364d79',
+  };
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -921,7 +921,7 @@ export default function PortfolioPage() {
                             {exame.descricao}
                           </p>
                           <Image
-                            src={exame.img.src}
+                            src={exame.img}
                             alt="mamografia"
                           />
                         </div>
@@ -932,6 +932,7 @@ export default function PortfolioPage() {
                         </DialogClose>
                       </DialogContent>
                     </Dialog>
+
                   ))}
               </div>
             </div>
@@ -978,7 +979,77 @@ export default function PortfolioPage() {
           <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
             Unidades de Atendimento
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            {unidades.map((unidade, index) => (
+              <Card
+                key={index}
+                className="hover:shadow-lg transition-shadow h-full mb-16"
+              >
+                <CardHeader>
+                  <div className="flex items-start space-x-3">
+                    {unidade.tipo === "Unidade Móvel" ? (
+                      <Truck className="h-6 w-6 text-green-600 mt-1 flex-shrink-0" />
+                    ) : (
+                      <MapPin className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+                    )}
+                    <div>
+                      <Badge
+                        className={`mb-2 ${unidade.tipo === "Unidade Principal"
+                          ? "bg-blue-100 text-blue-800"
+                          : unidade.tipo === "Unidade Móvel"
+                            ? "bg-green-100 text-green-800"
+                            : "bg-gray-100 text-gray-800"
+                          }`}
+                      >
+                        {unidade.tipo}
+                      </Badge>
+                      <CardTitle className="text-lg text-gray-900">
+                        {unidade.nome}
+                      </CardTitle>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    {unidade.endereco}
+                    {unidade.cep && (
+                      <>
+                        <br />
+                        <span className="font-medium">{unidade.cep}</span>
+                      </>
+                    )}
+                  </p>
+                </CardContent>
+                <Carousel autoplay={{ dotDuration: true }} autoplaySpeed={5000} key={index} className="mb-8">
+                  {unidade.examesImg.map((exame, idx) => (
+                    <div className="mx-auto text-center" key={idx}>
+                      <Image
+                        src={exame.img} alt={""}
+                        style={{ width: "80%", height: "300px", objectFit: "cover" }}
+                        className="mx-auto rounded-xl"
+                      />
+                    </div>
+                  ))}
+                </Carousel>
+
+
+                <div className="p-6 bg-gray-50 rounded-b-lg">
+                  <ul className="grid grid-cols-3 gap-4">
+                    {unidade.exames.map((exame, idx) => (
+                      <li key={idx} className="flex items-start space-x-3 mb-2 text-blue-800">
+                        {exame}
+                      </li>
+                        ))}
+                  </ul>
+                </div>
+
+
+              </Card>
+            ))}
+          </div>
+
+
+          {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {unidades.map((unidade, index) => (
               <Card
                 key={index}
@@ -1021,7 +1092,7 @@ export default function PortfolioPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
