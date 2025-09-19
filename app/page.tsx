@@ -367,6 +367,15 @@ export default function PortfolioPage() {
             <NavigationMenu.List className="hidden md:flex gap-6">
               <NavigationMenu.Item>
                 <NavigationMenu.Link className="text-gray-700 hover:text-black transition" href="#contato">
+                  <div>
+                    <div>
+                      <a href="https://entregadeexames.com.br/" target="_blank">
+                        <Button className="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white shadow-lg rounded-full px-4 py-2" >    
+                          Solicitar Resultados
+                        </Button>
+                      </a>
+                    </div>
+                  </div>
                   <div className="block md:hidden">
                     <Dialog>
                       <DialogTrigger asChild>
@@ -860,85 +869,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section> */}
-
-      {/* Exames e Procedimentos Detalhados */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Exames e Procedimentos Realizados
-          </h3>
-
-          {/* Agrupamento por categoria */}
-          {[
-            "Exames e procedimentos de radiologia",
-            "Exames Cardiológicos",
-            "Exame de pneumologia",
-            "Exames auriculares",
-            "Exames de gastroenterologia",
-            "Exames Neurológicos",
-            "Laboratório",
-            "Exames de saúde ocupacional",
-          ].map((categoria) => (
-            <div key={categoria} className="mb-12">
-              <h4 className="text-2xl font-semibold text-blue-900 mb-6 flex items-center">
-                <div className="w-1 h-8 bg-blue-600 mr-3"></div>
-                {categoria}
-              </h4>
-              <div className="grid md:grid-cols-2 gap-6">
-                {examesDetalhados
-                  .filter((exame) => exame.categoria === categoria)
-                  .map((exame, index) => (
-                    <Dialog key={index}>
-                      <DialogTrigger asChild>
-                        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-                          <CardHeader>
-                            <div className="flex items-start space-x-3">
-                              <div className="p-2 bg-blue-100 rounded-lg text-blue-600 flex-shrink-0">
-                                {exame.icon}
-                              </div>
-                              <div>
-                                <CardTitle className="text-lg text-blue-900">
-                                  {exame.nome}
-                                </CardTitle>
-                              </div>
-                            </div>
-                          </CardHeader>
-                          {/* <CardContent>
-                            <p className="text-gray-600 leading-relaxed">
-                              {exame.descricao}
-                            </p>
-                          </CardContent> */}
-                        </Card>
-                      </DialogTrigger>
-                      <DialogContent className="w-[95%] max-w-md rounded-2xl mx-auto px-4 sm:px-6">
-                        <DialogHeader>
-                          <DialogTitle className="text-xl text-blue-900">
-                            {exame.nome}
-                          </DialogTitle>
-                        </DialogHeader>
-                        <div className="space-y-4">
-                          <p className="text-gray-400 text-justify font">
-                            {exame.descricao}
-                          </p>
-                          <Image
-                            src={exame.img}
-                            alt="mamografia"
-                          />
-                        </div>
-                        <DialogClose asChild>
-                          <Button >
-                            <span className=" text-black">Voltar</span>
-                          </Button>
-                        </DialogClose>
-                      </DialogContent>
-                    </Dialog>
-
-                  ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Procedimentos de Enfermagem */}
       {/*  <section className="py-16 px-6 bg-white">
