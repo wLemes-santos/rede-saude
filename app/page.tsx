@@ -76,8 +76,6 @@ import MedicImage from "../pictures/medicos.png"
 import DialogContentContect from "@/components/DialogContentContect";
 import { id } from "date-fns/locale";
 
-
-
 export default function PortfolioPage() {
   const especialidades = [
     "Clínica Médica",
@@ -106,14 +104,16 @@ export default function PortfolioPage() {
   const examesDetalhados = [
     {
       nome: "Mamografia digital", //feito
-      descricao: "Mamografia é um exame de imagem que usa raios-X de baixa dose para ver o interior da mama. É a principal ferramenta para a detecção precoce do câncer de mama.",
+      descricao:
+        "Mamografia é um exame de imagem que usa raios-X de baixa dose para ver o interior da mama. É a principal ferramenta para a detecção precoce do câncer de mama.",
       icon: <Eye className="h-6 w-6" />,
       categoria: "Exames e procedimentos de radiologia",
-      img: mamografia
+      img: mamografia,
     },
     {
       nome: "Ressonância magnética",
-      descricao: "A ressonância magnética (RM) é um exame de imagem avançado que usa um campo magnético forte e ondas de rádio para criar imagens detalhadas dos órgãos e tecidos do corpo. A grande vantagem é que ela não usa radiação, ao contrário dos exames de raios-X ou tomografia.",
+      descricao:
+        "A ressonância magnética (RM) é um exame de imagem avançado que usa um campo magnético forte e ondas de rádio para criar imagens detalhadas dos órgãos e tecidos do corpo. A grande vantagem é que ela não usa radiação, ao contrário dos exames de raios-X ou tomografia.",
       icon: <Camera className="h-6 w-6" />,
       categoria: "Exames e procedimentos de radiologia",
       img: reconaciaMag,
@@ -124,7 +124,7 @@ export default function PortfolioPage() {
         "Avalia a massa óssea para diagnóstico de osteopenia e osteoporose, especialmente em coluna lombar e fêmur.",
       icon: <Monitor className="h-6 w-6" />,
       categoria: "Exames e procedimentos de radiologia",
-      img: densitometria
+      img: densitometria,
     },
     {
       nome: "Ultrassonografia (diversos tipos)",
@@ -148,7 +148,7 @@ export default function PortfolioPage() {
         "Registra a atividade elétrica do coração para detectar arritmias, infarto e alterações cardíacas. Rápido, indolor e não invasivo.",
       icon: <Heart className="h-6 w-6" />,
       categoria: "Exames Cardiológicos",
-      img: eletrocardiogra
+      img: eletrocardiogra,
     },
     {
       nome: "Eletroencefalograma (EEG)",
@@ -156,11 +156,12 @@ export default function PortfolioPage() {
         "Registra a atividade elétrica cerebral, usado para diagnosticar epilepsia, distúrbios do sono e alterações neurológicas.",
       icon: <Brain className="h-6 w-6" />,
       categoria: "Exames Neurológicos",
-      img: eletroencefalograma
+      img: eletroencefalograma,
     },
     {
       nome: "Eletroneuromiografia",
-      descricao: "A eletroneuromiografia é um exame que avalia o funcionamento dos nervos e músculos. Ele é usado para investigar a causa de sintomas como dormência, formigamento, dor e fraqueza.",
+      descricao:
+        "A eletroneuromiografia é um exame que avalia o funcionamento dos nervos e músculos. Ele é usado para investigar a causa de sintomas como dormência, formigamento, dor e fraqueza.",
       icon: <Brain className="h-6 w-6" />,
       categoria: "Exames Neurológicos",
       img: eletroneuromiografia
@@ -171,7 +172,7 @@ export default function PortfolioPage() {
         "Avalia a função pulmonar e a capacidade respiratória, essencial para diagnóstico de asma, bronquite e DPOC.",
       icon: <Wind className="h-6 w-6" />,
       categoria: "Exames Funcionais",
-      img: espirometria
+      img: espirometria,
     },
     {
       nome: "Audiometria",
@@ -179,7 +180,7 @@ export default function PortfolioPage() {
         "Mede a capacidade auditiva e identifica perdas auditivas. Inclui audiometria tonal, vocal e infantil.",
       icon: <Headphones className="h-6 w-6" />,
       categoria: "Exames Funcionais",
-      img: audiometria
+      img: audiometria,
     },
     {
       nome: "Teste Ergométrico (Esteira)",
@@ -187,7 +188,7 @@ export default function PortfolioPage() {
         "Avalia o desempenho cardiovascular durante esforço físico, detectando isquemias e arritmias.",
       icon: <Activity className="h-6 w-6" />,
       categoria: "Exames Cardiológicos",
-      img: test_erg
+      img: test_erg,
     },
     {
       nome: "Exame MAPA",
@@ -195,7 +196,7 @@ export default function PortfolioPage() {
         "Monitoramento ambulatorial da pressão arterial por 24h. Diagnostica hipertensão e avalia eficácia de tratamentos.",
       icon: <Monitor className="h-6 w-6" />,
       categoria: "Exames Cardiológicos",
-      img: ex_mapa
+      img: ex_mapa,
     },
     {
       nome: "Exame Holter",
@@ -203,63 +204,71 @@ export default function PortfolioPage() {
         "Registro contínuo da atividade elétrica do coração por 24h para diagnosticar arritmias e avaliar tratamentos.",
       icon: <Heart className="h-6 w-6" />,
       categoria: "Exames Cardiológicos",
-      img: holter
+      img: holter,
     },
     {
       nome: "Ecocardiograma",
-      descricao: "O ecocardiograma é um exame de imagem que usa ultrassom para avaliar o coração.",
+      descricao:
+        "O ecocardiograma é um exame de imagem que usa ultrassom para avaliar o coração.",
       icon: <Heart className="h-6 w-6" />,
       categoria: "Exames Cardiológicos",
-      img: ecocardiograma
+      img: ecocardiograma,
     },
     {
       nome: "Audiometria tonal e vocal",
-      descricao: "São testes auditivos que avaliam a capacidade de ouvir sons e entender palavras.",
+      descricao:
+        "São testes auditivos que avaliam a capacidade de ouvir sons e entender palavras.",
       icon: <Microscope className="h-6 w-6" />,
       categoria: "Exames auriculares",
-      img: tonal_vocal
+      img: tonal_vocal,
     },
     {
       nome: "Imitanciometria",
-      descricao: "Exame rápido e indolor que avalia a saúde do ouvido médio (tímpano e ossículos), medindo sua resposta a sons e variações de pressão.",
+      descricao:
+        "Exame rápido e indolor que avalia a saúde do ouvido médio (tímpano e ossículos), medindo sua resposta a sons e variações de pressão.",
       icon: <Microscope className="h-6 w-6" />,
       categoria: "Exames auriculares",
-      img: imitanciometria
+      img: imitanciometria,
     },
     {
       nome: "Colonoscopia",
-      descricao: "Exame que visualiza o interior do intestino grosso (cólon e reto) usando um tubo flexível com câmera",
+      descricao:
+        "Exame que visualiza o interior do intestino grosso (cólon e reto) usando um tubo flexível com câmera",
       icon: <Microscope className="h-6 w-6" />,
       categoria: "Exames de gastroenterologia",
-      img: colonoscopia
+      img: colonoscopia,
     },
     {
       nome: "Endoscopia",
-      descricao: "Exame que visualiza o interior do sistema digestivo (como esôfago, estômago e duodeno) usando um tubo flexível com uma câmera na ponta",
+      descricao:
+        "Exame que visualiza o interior do sistema digestivo (como esôfago, estômago e duodeno) usando um tubo flexível com uma câmera na ponta",
       icon: <Microscope className="h-6 w-6" />,
       categoria: "Exames de gastroenterologia",
-      img: endoscopia
+      img: endoscopia,
     },
     {
       nome: "Biópsia",
-      descricao: "Procedimento que coleta uma pequena amostra de tecido ou células do corpo para análise em laboratório, identificando doenças como câncer, infecções ou inflamações.",
+      descricao:
+        "Procedimento que coleta uma pequena amostra de tecido ou células do corpo para análise em laboratório, identificando doenças como câncer, infecções ou inflamações.",
       icon: <Microscope className="h-6 w-6" />,
       categoria: "Exames de gastroenterologia",
-      img: biopsia
+      img: biopsia,
     },
     {
       nome: "Acuidade visual",
-      descricao: 'Mede a capacidade dos olhos de identificar detalhes e formas a uma distância padrão (geralmente 6 metros). É o famoso "teste de vista" com letras ou símbolos.',
+      descricao:
+        'Mede a capacidade dos olhos de identificar detalhes e formas a uma distância padrão (geralmente 6 metros). É o famoso "teste de vista" com letras ou símbolos.',
       icon: <Microscope className="h-6 w-6" />,
       categoria: "Exames de saúde ocupacional",
-      img: acuidadeVisual
+      img: acuidadeVisual,
     },
     {
       nome: "Exames clínicos",
-      descricao: "Os exames clínicos são procedimentos médicos usados para diagnosticar, monitorar ou prevenir doenças. Podem ser desde testes simples até análises complexas.",
+      descricao:
+        "Os exames clínicos são procedimentos médicos usados para diagnosticar, monitorar ou prevenir doenças. Podem ser desde testes simples até análises complexas.",
       icon: <Microscope className="h-6 w-6" />,
       categoria: "Exames de saúde ocupacional",
-      img: clinico
+      img: clinico,
     },
 
     {
@@ -268,14 +277,15 @@ export default function PortfolioPage() {
         "Coleta de sangue, urina e outros materiais para análise. Posto de coleta disponível na unidade central.",
       icon: <Microscope className="h-6 w-6" />,
       categoria: "Laboratório",
-      img: laboratorio
+      img: laboratorio,
     },
     {
       nome: "Espirometria",
-      descricao: "Exame rápido que mede quanto ar você consegue inspirar e expirar, e a velocidade do seu sopro.",
+      descricao:
+        "Exame rápido que mede quanto ar você consegue inspirar e expirar, e a velocidade do seu sopro.",
       icon: <UserCheck className="h-6 w-6" />,
       categoria: "Exame de pneumologia",
-      img: espirometria2
+      img: espirometria2,
     },
   ];
 
@@ -426,6 +436,7 @@ export default function PortfolioPage() {
           />
         </section>
         <div className="container mx-auto">
+
           {/* Implantação de Serviços */}
           <section className="py-16 px-6 bg-white">
             <div className="container mx-auto">
@@ -869,7 +880,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section> */}
-
       {/* Procedimentos de Enfermagem */}
       {/*  <section className="py-16 px-6 bg-white">
         <div className="container mx-auto">
@@ -1307,21 +1317,6 @@ export default function PortfolioPage() {
             Nossa equipe está preparada para acolher sua necessidade com
             eficiência, empatia e segurança.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              className="bg-white text-blue-600 hover:bg-gray-100"
-            >
-              <Calendar className="h-5 w-5 mr-2" />
-              Agendar Atendimento
-            </Button>
-            <Button
-              className="border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
-            >
-              <Mail className="h-5 w-5 mr-2" />
-              Solicitar Orçamento
-            </Button>
-          </div>
         </div>
       </section>
 
