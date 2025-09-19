@@ -1,3 +1,4 @@
+'use client'
 import {
   Card,
   CardContent,
@@ -5,12 +6,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button, Image } from "antd";
-import { Badge } from "@/components/ui/badge";
+import { Button, Badge, Row, Col, Typography, Space, Menu, Layout, Divider, Carousel } from "antd"
 import { Separator } from "@/components/ui/separator";
 import {
   Heart,
-  Stethoscope,
   Users,
   MapPin,
   Phone,
@@ -68,9 +67,14 @@ import {
   espirometria2,
   imgAleatoria1,
   imgAleatoria2,
-  grupoSaude,
-} from "../pictures/importPictures";
+  grupoSaude
+} from "../pictures/importPictures"
+import * as NavigationMenu from "@radix-ui/react-navigation-menu"
+import Image from "next/image";
+import Logo from "../pictures/Grupo_Saude_Vale_Jurumirim.png"
+import MedicImage from "../pictures/medicos.png"
 import DialogContentContect from "@/components/DialogContentContect";
+import { id } from "date-fns/locale";
 
 export default function PortfolioPage() {
   const especialidades = [
@@ -128,7 +132,7 @@ export default function PortfolioPage() {
         "Inclui abdominal, transvaginal, morfológico, com Doppler e ecocardiograma. Diagnóstico por ondas sonoras, não invasivo e indolor.",
       icon: <Waves className="h-6 w-6" />,
       categoria: "Exames e procedimentos de radiologia",
-      img: ultrasonografia,
+      img: ultrasonografia
     },
     {
       nome: "Raio-X (Radiografia)",
@@ -160,7 +164,7 @@ export default function PortfolioPage() {
         "A eletroneuromiografia é um exame que avalia o funcionamento dos nervos e músculos. Ele é usado para investigar a causa de sintomas como dormência, formigamento, dor e fraqueza.",
       icon: <Brain className="h-6 w-6" />,
       categoria: "Exames Neurológicos",
-      img: eletroneuromiografia,
+      img: eletroneuromiografia
     },
     {
       nome: "Espirometria",
@@ -302,37 +306,24 @@ export default function PortfolioPage() {
       endereco: "Rua Salvador de Freitas, 1316, Térreo - Centro, Itaí/SP",
       cep: "CEP 18730-027",
       tipo: "Unidade Principal",
-    },
-    {
-      nome: "Santa Casa de Misericórdia de Itaí",
-      endereco: "SP-255, km 363 - Jardim Monte Alto, Itaí/SP",
-      cep: "",
-      tipo: "Parceria Hospitalar",
+      exames: ['Tomografia', 'Eletrocardiograma', 'Eletrocefalograma', 'Mapa', 'Holter', 'Espirometria', 'Endoscopia', 'Colonoscopia', 'Ultrassom Convencional', 'Doppler', 'Morfológico', 'Transvaginal', 'Mamografia Digital', 'Ressonância Magnética', 'Densitometria Óssea', 'Raio-X Digital'],
+      examesImg: [{ img: raiox, text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }]
     },
     {
       nome: "Santa Casa de Misericórdia de Avaré",
       endereco: "Rua Mato Grosso, anexo à Santa Casa - Centro, Avaré/SP",
       cep: "",
       tipo: "Parceria Hospitalar",
+      exames: ['Raio-X', 'Audiometria', 'Acuidade Visual', 'Exames Laboratorias', 'Consultas Medicas', 'Tomografia', 'Eletrocardiograma', 'Eletrocefalograma', 'Mapa', 'Holter', 'Espirometria', 'Endoscopia', 'Colonoscopia', 'Ultrassom Convencional', 'Doppler', 'Morfológico', 'Transvaginal', 'Mamografia Digital', 'Ressonância Magnética', 'Densitometria Óssea', 'Raio-X Digital'],
+      examesImg: [{ img: raiox, text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }]
     },
     {
       nome: "Santa Casa de Misericórdia de Taquarituba",
       endereco: "Rua Mal. Floriano Peixoto, 95 - Centro, Taquarituba/SP",
       cep: "",
       tipo: "Parceria Hospitalar",
-    },
-    {
-      nome: "Unimed Avaré - Núcleo de Exames Complementares",
-      endereco: "Rua Santa Catarina, 1961 - Vila, Avaré/SP",
-      cep: "",
-      tipo: "Parceria Clínica",
-    },
-    {
-      nome: "Unidade de Saúde Móvel - Carreta Adaptada",
-      endereco:
-        "Atendimento itinerante em parceria com instituições públicas e privadas",
-      cep: "",
-      tipo: "Unidade Móvel",
+      exames: ['Densitometria óssea', 'Eletrocardiograma', 'Eletrocefalograma', 'Espirometria', 'Endoscopia', 'Colonoscopia', 'Ultrassom Convencional'],
+      examesImg: [{ img: raiox, text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }]
     },
   ];
 
@@ -356,181 +347,96 @@ export default function PortfolioPage() {
     "Redução de papel, espaço físico e riscos de extravio",
   ];
 
+  const onChange = (currentSlide: number) => {
+    console.log(currentSlide);
+  };
+
+  const contentStyle: React.CSSProperties = {
+    margin: 0,
+    height: '160px',
+    color: '#fff',
+    lineHeight: '160px',
+    textAlign: 'center',
+    background: '#364d79',
+  };
+
+
   return (
     <div className="min-h-screen bg-white">
+
       {/* Header */}
-      <header className="bg-blue-900 text-white px-4 md:px-8 py-4 md:py-8">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-            <div className="flex flex-col md:flex-row md:items-center md:space-x-4">
-              {/* Logo Real do Grupo Saúde */}
-              <div className="bg-white p-4 rounded-lg shadow-md mx-auto md:mx-0">
-                <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ndeimyWMlkTO5DS3JG5eSWfMvlXnYS.png"
-                  alt="Grupo Saúde Vale do Jurumirim"
-                  className="h-16 w-auto object-contain"
-                />
-              </div>
-              <div className="mt-4 md:mt-0 text-center md:text-left">
-                <h1 className="text-2xl font-bold">Portfólio Institucional</h1>
-                <p className="text-blue-200">Grupo Saúde Vale do Jurumirim</p>
-              </div>
-            </div>
-            <div className="block md:hidden">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button className="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white shadow-lg rounded-full px-4 py-2">
-                    <Phone className="h-4 w-4 mr-2" />
-                    Contato
-                  </Button>
-                </DialogTrigger>
-                <DialogContentContect />
-              </Dialog>
-            </div>
-            <div className="hidden md:block">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button className="bg-blue-900 hover:bg-blue-700 text-white rounded-full px-4 py-2">
-                    <Phone className="h-4 w-4 mr-2" />
-                    Contato
-                  </Button>
-                </DialogTrigger>
-                <DialogContentContect />
-              </Dialog>
-            </div>
+      <header className="bg-white shadow-sm border-b px-4 py-4">
+        <div className="container mx-auto flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center space-x-2">
+            <Image src={Logo} alt="Logo" />
           </div>
+
+          {/* Menu */}
+          <NavigationMenu.Root>
+            <NavigationMenu.List className="hidden md:flex gap-6">
+              <NavigationMenu.Item>
+                <NavigationMenu.Link className="text-gray-700 hover:text-black transition" href="#contato">
+                  <div>
+                    <div>
+                      <a href="https://entregadeexames.com.br/" target="_blank">
+                        <Button className="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white shadow-lg rounded-full px-4 py-2" >    
+                          Solicitar Resultados
+                        </Button>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="block md:hidden">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button className="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white shadow-lg rounded-full px-4 py-2">
+                          <Phone className="h-4 w-4 mr-2" />
+                          Contato
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContentContect />
+                    </Dialog>
+                  </div>
+                  <div className="hidden md:block">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button className="bg-blue-900 hover:bg-blue-700 text-white rounded-full px-4 py-2">
+                          <Phone className="h-4 w-4 mr-2" />
+                          Contato
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContentContect />
+                    </Dialog>
+                  </div>
+                </NavigationMenu.Link>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Root>
         </div>
       </header>
 
-      {/* Apresentação Institucional */}
-      <section className="py-16 px-6 bg-gradient-to-br from-blue-50 to-green-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-8">
-            {/* Logo grande na apresentação */}
-            <div className="inline-block bg-white px-4 md:px-8, py-4 md:py-8 rounded-xl shadow-lg mb-6">
-              <Image
-                src={grupoSaude.src}
-                alt="Grupo Saúde Vale do Jurumirim"
-                className="h-32 w-auto object-contain mx-auto"
-                height={200}
-                width={300}
-              />
-            </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Apresentação Institucional
-            </h2>
-          </div>
-          <div className="max-w-none text-gray-700 leading-relaxed">
-            <p className="text-xl text-justify">
-              Somos um grupo de soluções aplicadas nas mais diversas áreas de
-              saúde. Transformamos estruturas hospitalares e clínicas com
-              inteligência a serviço do cuidado. Utilizamos tecnologia de ponta
-              e dados clínicos para entregar diagnósticos mais rápidos, precisos
-              e acessíveis, sempre com foco na experiência do paciente.
-              Acreditamos que saúde de qualidade precisa ser eficiente, mas
-              também humana. Trabalhamos em parcerias públicas e privadas,
-              atuando lado a lado com os profissionais da saúde para apoiar
-              decisões clínicas com segurança e confiança. Nossa excelência é
-              reconhecida por um corpo clínico de referência e protocolos
-              rigorosos que garantem credibilidade à prática médica. Somos por
-              você. E estamos prontos para levar saúde de qualidade - com
-              escala, precisão e compromisso com a vida.
-            </p>
-          </div>
-        </div>
-      </section>
+
+
 
       {/* Áreas de Atuação */}
-      <section className="py-16 px-6 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-bold text-gray-900 mb-4">
-              Nossas Áreas de Atuação
-            </h3>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Oferecemos soluções completas e integradas em saúde, com expertise
-              em diferentes segmentos para atender todas as necessidades de
-              nossos parceiros e pacientes.
+      <section className="px-6 bg-white">
+        <section className="bg-gradient-to-b from-blue-900 to-teal-400 text-white w-screen relative left-1/2 right-1/2 -mx-[50vw]" style={{ minHeight: 270 }}>
+          <div className="container mx-auto px-4 max-w-2xl">
+            <h2 className="text-3xl font-bold text-white font-inter mb-4 py-5">
+              Cuidando da sua saúde<br /> com excelência e <br />proximidade
+            </h2>
+            <p className="font-inter text-white">
+              Atendimento humanizado com tecnologia para<br /> sua saúde e bem-estar
             </p>
           </div>
-          <section className="py-16 px-6 bg-blue-50">
-            <div className="container mx-auto">
-              <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
-                Gestão de Diagnóstico em Unidades Existentes
-              </h3>
-              <Card className="max-w-5xl mx-auto">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-2xl text-blue-900">
-                    <Building2 className="h-8 w-8 text-blue-600 mr-3" />
-                    Revitalização de Setores de Diagnósticos
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700 mb-6 leading-relaxed text-justify">
-                    Muitos gestores hospitalares possuem setores de diagnósticos
-                    obsoletos ou subutilizados, sem manutenção correta e sem mão
-                    de obra qualificada, devido aos altos custos operacionais. O
-                    Grupo Saúde - Vale do Jurumirim, através de projeto e estudo
-                    aplicado de viabilidade, pode assumir a gestão completa do
-                    respectivo setor, revitalizando-o e transformando-o com
-                    expertise, tecnologia e recursos humanos adequados.
-                  </p>
-                  <div className="grid md:grid-cols-3 gap-6">
-                    <div className="text-center">
-                      <Settings className="h-12 w-12 text-blue-600 mx-auto mb-3" />
-                      <h4 className="font-semibold text-blue-900 mb-2">
-                        Expertise Técnica
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        Profissionais qualificados e experientes
-                      </p>
-                    </div>
-                    <div className="text-center">
-                      <Zap className="h-12 w-12 text-green-600 mx-auto mb-3" />
-                      <h4 className="font-semibold text-green-900 mb-2">
-                        Tecnologia Avançada
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        Equipamentos modernos e atualizados
-                      </p>
-                    </div>
-                    <div className="text-center">
-                      <Users className="h-12 w-12 text-purple-600 mx-auto mb-3" />
-                      <h4 className="font-semibold text-purple-900 mb-2">
-                        Recursos Humanos
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        Equipe especializada e treinada
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-            <div className="flex justify-center mt-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
-                <div>
-                  <Image
-                    src={imgAleatoria1.src}
-                    alt="Imagem ilustrativa de diagnóstico por imagem"
-                    className="rounded-lg shadow-lg w-full h-auto object-cover"
-                    width={300} // Largura em pixels
-                    height={200} // Altura em pixels
-                  />
-                </div>
+          <Image
+            src={MedicImage}
+            alt="Imagem médica"
+            className="absolute top-0 right-0 h-80 object-contain z-20"
+          />
+        </section>
+        <div className="container mx-auto">
 
-                <div>
-                  <Image
-                    src={imgAleatoria2.src}
-                    alt="Imagem ilustrativa de diagnóstico por imagem"
-                    className="rounded-lg shadow-lg w-full h-auto object-cover"
-                    width={300} // Largura em pixels
-                    height={200} // Altura em pixels
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
           {/* Implantação de Serviços */}
           <section className="py-16 px-6 bg-white">
             <div className="container mx-auto">
@@ -974,82 +880,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section> */}
-
-      {/* Exames e Procedimentos Detalhados */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Exames e Procedimentos Realizados
-          </h3>
-
-          {/* Agrupamento por categoria */}
-          {[
-            "Exames e procedimentos de radiologia",
-            "Exames Cardiológicos",
-            "Exame de pneumologia",
-            "Exames auriculares",
-            "Exames de gastroenterologia",
-            "Exames Neurológicos",
-            "Laboratório",
-            "Exames de saúde ocupacional",
-          ].map((categoria) => (
-            <div key={categoria} className="mb-12">
-              <h4 className="text-2xl font-semibold text-blue-900 mb-6 flex items-center">
-                <div className="w-1 h-8 bg-blue-600 mr-3"></div>
-                {categoria}
-              </h4>
-              <div className="grid md:grid-cols-2 gap-6">
-                {examesDetalhados
-                  .filter((exame) => exame.categoria === categoria)
-                  .map((exame, index) => (
-                    <Dialog key={index}>
-                      <DialogTrigger asChild>
-                        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-                          <CardHeader>
-                            <div className="flex items-start space-x-3">
-                              <div className="p-2 bg-blue-100 rounded-lg text-blue-600 flex-shrink-0">
-                                {exame.icon}
-                              </div>
-                              <div>
-                                <CardTitle className="text-lg text-blue-900">
-                                  {exame.nome}
-                                </CardTitle>
-                              </div>
-                            </div>
-                          </CardHeader>
-                          {/* <CardContent>
-                            <p className="text-gray-600 leading-relaxed">
-                              {exame.descricao}
-                            </p>
-                          </CardContent> */}
-                        </Card>
-                      </DialogTrigger>
-                      <DialogContent className="w-[95%] max-w-md rounded-2xl mx-auto px-4 sm:px-6">
-                        <DialogHeader>
-                          <DialogTitle className="text-xl text-blue-900">
-                            {exame.nome}
-                          </DialogTitle>
-                        </DialogHeader>
-                        <div className="space-y-4">
-                          <p className="text-gray-400 text-justify font">
-                            {exame.descricao}
-                          </p>
-                          <Image src={exame.img.src} alt="mamografia" />
-                        </div>
-                        <DialogClose asChild>
-                          <Button>
-                            <span className=" text-black">Voltar</span>
-                          </Button>
-                        </DialogClose>
-                      </DialogContent>
-                    </Dialog>
-                  ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Procedimentos de Enfermagem */}
       {/*  <section className="py-16 px-6 bg-white">
         <div className="container mx-auto">
@@ -1089,7 +919,77 @@ export default function PortfolioPage() {
           <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
             Unidades de Atendimento
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            {unidades.map((unidade, index) => (
+              <Card
+                key={index}
+                className="hover:shadow-lg transition-shadow h-full mb-16"
+              >
+                <CardHeader>
+                  <div className="flex items-start space-x-3">
+                    {unidade.tipo === "Unidade Móvel" ? (
+                      <Truck className="h-6 w-6 text-green-600 mt-1 flex-shrink-0" />
+                    ) : (
+                      <MapPin className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+                    )}
+                    <div>
+                      <Badge
+                        className={`mb-2 ${unidade.tipo === "Unidade Principal"
+                          ? "bg-blue-100 text-blue-800"
+                          : unidade.tipo === "Unidade Móvel"
+                            ? "bg-green-100 text-green-800"
+                            : "bg-gray-100 text-gray-800"
+                          }`}
+                      >
+                        {unidade.tipo}
+                      </Badge>
+                      <CardTitle className="text-lg text-gray-900">
+                        {unidade.nome}
+                      </CardTitle>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    {unidade.endereco}
+                    {unidade.cep && (
+                      <>
+                        <br />
+                        <span className="font-medium">{unidade.cep}</span>
+                      </>
+                    )}
+                  </p>
+                </CardContent>
+                <Carousel autoplay={{ dotDuration: true }} autoplaySpeed={5000} key={index} className="mb-8">
+                  {unidade.examesImg.map((exame, idx) => (
+                    <div className="mx-auto text-center" key={idx}>
+                      <Image
+                        src={exame.img} alt={""}
+                        style={{ width: "80%", height: "300px", objectFit: "cover" }}
+                        className="mx-auto rounded-xl"
+                      />
+                    </div>
+                  ))}
+                </Carousel>
+
+
+                <div className="p-6 bg-gray-50 rounded-b-lg">
+                  <ul className="grid grid-cols-3 gap-4">
+                    {unidade.exames.map((exame, idx) => (
+                      <li key={idx} className="flex items-start space-x-3 mb-2 text-blue-800">
+                        {exame}
+                      </li>
+                        ))}
+                  </ul>
+                </div>
+
+
+              </Card>
+            ))}
+          </div>
+
+
+          {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {unidades.map((unidade, index) => (
               <Card
                 key={index}
@@ -1104,14 +1004,12 @@ export default function PortfolioPage() {
                     )}
                     <div>
                       <Badge
-                        variant="secondary"
-                        className={`mb-2 ${
-                          unidade.tipo === "Unidade Principal"
-                            ? "bg-blue-100 text-blue-800"
-                            : unidade.tipo === "Unidade Móvel"
+                        className={`mb-2 ${unidade.tipo === "Unidade Principal"
+                          ? "bg-blue-100 text-blue-800"
+                          : unidade.tipo === "Unidade Móvel"
                             ? "bg-green-100 text-green-800"
                             : "bg-gray-100 text-gray-800"
-                        }`}
+                          }`}
                       >
                         {unidade.tipo}
                       </Badge>
@@ -1134,7 +1032,7 @@ export default function PortfolioPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
