@@ -307,7 +307,7 @@ export default function PortfolioPage() {
       cep: "CEP 18730-027",
       tipo: "Unidade Principal",
       exames: ['Tomografia', 'Eletrocardiograma', 'Eletrocefalograma', 'Mapa', 'Holter', 'Espirometria', 'Endoscopia', 'Colonoscopia', 'Ultrassom Convencional', 'Doppler', 'Morfológico', 'Transvaginal', 'Mamografia Digital', 'Ressonância Magnética', 'Densitometria Óssea', 'Raio-X Digital'],
-      examesImg: [{ img: raiox, text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }]
+      examesImg: [{ img: raiox, text: 'Raio-X' }, { img: eletrocardiogra, text: 'Raio-X' }, { img:ecocardiograma , text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }, { img:reconaciaMag , text: 'Raio-X' }]
     },
     {
       nome: "Santa Casa de Misericórdia de Avaré",
@@ -315,7 +315,7 @@ export default function PortfolioPage() {
       cep: "",
       tipo: "Parceria Hospitalar",
       exames: ['Raio-X', 'Audiometria', 'Acuidade Visual', 'Exames Laboratorias', 'Consultas Medicas', 'Tomografia', 'Eletrocardiograma', 'Eletrocefalograma', 'Mapa', 'Holter', 'Espirometria', 'Endoscopia', 'Colonoscopia', 'Ultrassom Convencional', 'Doppler', 'Morfológico', 'Transvaginal', 'Mamografia Digital', 'Ressonância Magnética', 'Densitometria Óssea', 'Raio-X Digital'],
-      examesImg: [{ img: raiox, text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }]
+      examesImg: [{ img: eletrocardiogra, text: 'Raio-X' }, { img: raiox, text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }, { img:espirometria , text: 'Raio-X' }, { img:ex_mapa , text: 'Raio-X' }, { img:imitanciometria , text: 'Raio-X' }] 
     },
     {
       nome: "Santa Casa de Misericórdia de Taquarituba",
@@ -323,7 +323,7 @@ export default function PortfolioPage() {
       cep: "",
       tipo: "Parceria Hospitalar",
       exames: ['Densitometria óssea', 'Eletrocardiograma', 'Eletrocefalograma', 'Espirometria', 'Endoscopia', 'Colonoscopia', 'Ultrassom Convencional'],
-      examesImg: [{ img: raiox, text: 'Raio-X' }, { img: ultrasonografia, text: 'Ultrasonografia' }, { img: mamografia, text: 'Mamografia' }]
+      examesImg: [{ img:ecocardiograma , text: 'Raio-X' }, { img: raiox, text: 'Raio-X' }, { img: colonoscopia, text: 'Ultrasonografia' }, { img:ex_mapa , text: 'Raio-X' }, { img: mamografia, text: 'Mamografia' }, { img:holter , text: 'Raio-X' }, { img:ultrasonografia , text: 'Raio-X' }]
     },
   ];
 
